@@ -21,3 +21,5 @@ socials:
 
 # Build settings
 markdown: kramdown
+plugins:
+  - jemoji
