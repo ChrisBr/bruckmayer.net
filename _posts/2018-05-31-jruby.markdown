@@ -104,7 +104,7 @@ This was just a wrap up of new stuff I found interesting.
 If you want to know what else changed in Ruby 2.5, have a look at the official release notes of [MRI](https://www.ruby-lang.org/en/news/2017/12/25/ruby-2-5-0-released/) or [JRuby](http://jruby.org/2018/05/24/jruby-9-2-0-0).
 A full list of my contributions to JRuby can be found [here](https://github.com/jruby/jruby/pulls?q=is%3Apr+is%3Aclosed+author%3AChrisBr) :sunglasses:.
 
-### Thanks :heart_eyes:
+### Acknowledgments
 When I submitted my first PR to JRuby, I was a little bit intimidated and expected that reviewing and merging it will take quite some time.
 But as it turned out, despite the JRuby core members are quite busy, they were super fast and helpful with reviewing my PRs.
 I would like to especially thank [Charles Nutter](https://github.com/headius), [Thomas Enebo](https://github.com/enebo) and [Karol Bucek](https://github.com/kares) for their help and feedback, I really learned a lot from my contributions to JRuby.
