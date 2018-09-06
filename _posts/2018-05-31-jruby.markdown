@@ -80,7 +80,7 @@ Hash also got the [new method slice](https://bugs.ruby-lang.org/issues/8499), wh
 This was already possible in Rails and finally it is now part of Ruby core.
 The implementation in JRuby can be found [here](https://github.com/jruby/jruby/pull/4949).
 
-Altough I learned how sets and hashes are implemented back at university, it was really nice to dive into it againd and see how this works in JRuby :heart:.
+Altough I learned how sets and hashes are implemented back at university, it was really nice to dive into it again and see how this works in JRuby :heart:.
 
 ### String
 The String class also got some new methods with the new Ruby release.
