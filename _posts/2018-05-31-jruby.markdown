@@ -16,7 +16,7 @@ In Ruby 2.5, the set class got a reset method which comes handy if you change an
 To better understand the issue, look at the following code (works only with Ruby 2.5):
 
 <br>
-```
+```ruby
 require 'set'
 
 a = [1, 2]

@@ -21,5 +21,8 @@ socials:
 
 # Build settings
 markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
 plugins:
   - jemoji
