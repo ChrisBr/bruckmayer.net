@@ -16,7 +16,7 @@ RubyConf 2019 was held in Nashville, Tennessee, and it was my first time going b
 
 ## Preparation
 
-As I gave the same talk as at RubyConf Indonesia, the preparation for RubyConf was a little bit less stressful although I was changing a lot of the content. 
+As I gave the same talk at RubyConf Indonesia, the preparation for RubyConf was a little bit less stressful although I changed a lot of the content. 
 One of the perks of RubyConf is to get paired with a speaker mentor. 
 My mentor was [Barrett Clark](https://twitter.com/barrettclark) and it was tremendously helpfull to run through the slides with him and do a rehearsal. 
 Additionally, I presented at the [South West Ruby meetup](https://twitter.com/southwestruby) and asked friends and collegues (special thanks to [Henne](https://twitter.com/henne) :wave:) for feedback.
