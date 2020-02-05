@@ -1,0 +1,122 @@
+---
+layout: post
+title:  "Rails i18n - Handling formatting within translated content"
+date:   2020-02-04 00:00:00
+categories: Rails
+---
+At Cookpad we build a global product to not only make cooking fun every day but also *everywhere*.
+With the help of the Rails Internationalization (i18n) API we have brought Cookpad to over 30 languages around the world.
+
+However, translating a product in 30 languages is not easy, and we're constantly learning and improving.
+
+In the following we will introduce one approach we've adopted for handling formatting of translated phrases.
+
+# Our Workflow
+- Working on a new feature, our development team uploads all new phrases in English to [OneSky](https://www.oneskyapp.com/).
+- Our colleagues around the world use the OneSky UI to translate new phrases.
+- Once a day an automated background job imports any new translations back into our repository.
+
+# Passing Variables to Translations
+As stated in the [Rails i18n guide](https://guides.rubyonrails.org/i18n.html#passing-variables-to-translations), a key consideration for successfully internationalizing an application is to avoid making incorrect assumptions about grammar rules when abstracting localized code.
+
+Let's have a look at the following example:
+```erb
+<%= "#{t('currency')}#{@product.price}" %>
+```
+
+```yaml
+en:
+  currency: "$"
+de:
+  currency: "€"
+```
+
+This translation makes the assumption that currency is always shown in front of the price.
+
+However, a correct translation for German would be `10 €` instead of `€10`.
+
+A better abstraction would be:
+
+```erb
+<%= t("product_price", price: @product.price) %>
+```
+
+```yaml
+en:
+  product_price: "$%{price}"
+de:
+  product_price: "%{price} €"
+```
+
+# Adding Formatting
+
+So far so good!
+But what happens if we now need to make the currency bold?
+
+Luckily you can use [HTML in translations](https://guides.rubyonrails.org/i18n.html#using-safe-html-translations) by adding a `_html` suffix to the key.
+
+We can now simply add a `<b>` tag in our translation:
+
+```erb
+<%= t("product_price_html", price: @product.price) %>
+```
+
+```yaml
+en:
+  product_price_html: "<b>$</b>%{price}"
+de:
+  product_price_html: "%{price} <b>€</b>"
+```
+
+Problem solved, right?
+
+Not quite, because we're now _mixing content and formatting_ which leads to other problems:
+
+- Our translators are not developers, and may get confused by or make
+  mistakes when editing the translation.
+- If we want to change the formatting, we now have to change _all the
+  translations_
+- If the markup is even _slightly_ more involved than a simple `<b>` (ie
+  links, HTML classes etc), it quickly becomes a maintenance nightmare, that's also very prone mistakes.
+
+# Solution
+The solution we've adopted is to _pass in any formatting to the translation_:
+
+```erb
+<%= t "product_price_html",
+  price: @product.price,
+  currency: tag.b(t("currency"))
+%>
+```
+
+```yaml
+en:
+  currency: $
+  product_price_html: "%{currency}%{price}"
+de:
+  currency: €
+  product_price_html: "%{price} %{currency}"
+```
+
+This can scale to accomodate even complicated markup, by combining
+strings:
+
+
+```erb
+<%= t "have_account_html",
+  link: link_to(t("login"), logout_path, class: "link-primary")
+%>
+```
+
+```yaml
+en:
+  have_account_html: "Already have an account? %{link}"
+  login: "Login here."
+```
+
+# Summary
+
+While it may take a bit of extra work and the erb markup grow slightly more than we'd ideally wish for,
+ultimately we think it's worth it for the problems it saves us from in the long run.
+
+Your translators (and future you) will thank you!
