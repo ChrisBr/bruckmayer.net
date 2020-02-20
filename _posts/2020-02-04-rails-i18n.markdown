@@ -23,7 +23,7 @@ A naive implementation could look like this:
 
 ```erb
 # app/views/users/show.html.erb
-<%= “#{t(‘joined’)} #{@user.created_at.year}” %>
+<%= t("joined") %>  <%= @user.created_at.year %>
 ```
 
 ```yaml
@@ -91,9 +91,10 @@ The solution we've adopted is to _pass in any formatting to the translation_:
 
 ```erb
 # app/views/users/show.html.erb
-<%= t “joined_html”,
+<%= t "joined_html",
   year: tag.b(@user.created_at.year)
 %>
+```
 
 ```yaml
 # config/locales/en.yml
