@@ -12,8 +12,6 @@ Last August I got an email with the following text
 As RubyConf is the largest (~800 attendees) and longest-running gatterhing of Ruby developers, this was really exciting news for me. 
 RubyConf 2019 was held in Nashville, Tennessee, and it was my first time going back to the US since a couple of years.
 
-<br>
-
 ## Preparation
 
 As I gave the same talk at RubyConf Indonesia, the preparation for RubyConf was a little bit less stressful although I changed a lot of the content. 
@@ -21,8 +19,6 @@ One of the perks of RubyConf is to get paired with a speaker mentor.
 My mentor was [Barrett Clark](https://twitter.com/barrettclark) and it was tremendously helpfull to run through the slides with him and do a rehearsal. 
 Additionally, I presented at the [South West Ruby meetup](https://twitter.com/southwestruby) and asked friends and collegues (special thanks to [Henne](https://twitter.com/henne) :wave:) for feedback.
 All in all I felt good prepared going to RubyConf.
-
-<br>
 
 ## Talks
 The opening Keynote was like every year by [Mats](https://twitter.com/yukihiro_matz?lang=de) and he was giving an overview what we can expect in the next releases of Ruby.
@@ -38,13 +34,19 @@ Ryan Lopopolo, which I met the night before at dinner, talked about Artichoke, a
 Charlie and Tom introduced what is new in JRuby and last but not least I gave my talk too. 
 As it was the last day, the conference was not super busy anymore but I reckon there were around 100 people attending my session.
 
-<div style="text-align: center;">
-<iframe width="1000" height="600" src="https://www.youtube.com/embed/-UVV8_560eE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-<br>
-
 ## Hallway Track
 
 Beside the super interesting talks, I also met and chatted with a lot of other Ruby developers, participated in the traditional 5k run and did some sight seeing. The most important part of the conference was that I could meet some open source developers which I collaborated online with but never meet in real live like [Charlie](https://github.com/headius), [Tom](https://github.com/enebo) and [Daniel](https://github.com/composerinteralia).
 
 <blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">As some of you know, one amazing community feature we have at RubyConf is getting together for a friendly 5K run/walk. This year’s was chilly but fantastic! <br><br>Here’s a photo of our runners before the start!<br><br>Also, this year’s times: <a href="https://t.co/RoSM7q8AtM">https://t.co/RoSM7q8AtM</a> <a href="https://t.co/Q2kkV07ZJR">pic.twitter.com/Q2kkV07ZJR</a></p>&mdash; rubyconf (@rubyconf) <a href="https://twitter.com/rubyconf/status/1196910049551114240?ref_src=twsrc%5Etfw">November 19, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Recording
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe src="https://www.youtube.com/embed/-UVV8_560eE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+## Slides
+
+<div class="embed-responsive embed-responsive-16by9">
+  <script async class="speakerdeck-embed" data-id="c4d5b2756fed47498e90c9a1de665794" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+</div>

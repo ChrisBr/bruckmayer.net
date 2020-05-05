@@ -30,7 +30,9 @@ h6 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
-  color: #2C3E50
+  color: #2C3E50;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 hr.star-light,
 hr.star-primary {
@@ -167,7 +169,6 @@ hr.star-primary:after {
 }
 
 section h2 {
-  margin: 0;
   font-size: 3em;
 }
 

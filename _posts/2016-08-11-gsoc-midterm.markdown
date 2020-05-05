@@ -90,5 +90,3 @@ You can read the full meeting minutes on the opensuse-project mailing list.
 Last but not least, we would like to thank everyone involved (mentors, students, board, TSP etc.) in this year’s Google Summer of Code – together we really make a difference!
 
 *Originally published on [https://news.opensuse.org](https://news.opensuse.org/2016/07/19/google-summer-of-code-mid-term/).*
-<br>
-<br>

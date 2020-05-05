@@ -18,15 +18,18 @@ By the end of this tutorial, we will have a very basic Performance Monitoring to
 
 > In this talk, we will build a basic performance analytics tool from scratch. We will deep dive into ActiveSupport instrumentations to collect, group and normalise metrics from your app. To persist these metrics, we will use a time series database and visualise the data on a dashboard. By the end of the talk, you will know how your favourite performance analytics tool works.
 
+## Recording
+
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe width="800" height="315" src="https://www.youtube.com/embed/2yc_kWJGLW8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 
 ## Slides
 
-<br>
-
-<script async class="speakerdeck-embed" data-id="7a89961f62a544f1abb7afef8222da4d" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
-
-<br>
-
+<div class="embed-responsive embed-responsive-16by9">
+  <script async class="speakerdeck-embed" data-id="7a89961f62a544f1abb7afef8222da4d" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+</div>
 
 ## Chapter 1: Collecting data
 ### Notification Framework
@@ -61,8 +64,6 @@ several hooks to subscribe to e.g. processing of controller actions, SQL queries
 However, Rails does not provide hooks for external libraries like Redis or Memcache.
 In [ef20](https://github.com/ChrisBr/active_monitoring/commit/ef200ae5bf58f9afd2a69003e2c3620d0d9c86eb) and [46c3](https://github.com/ChrisBr/active_monitoring/commit/46c338f8fa5870bae7dc0e251e637d1d4be551db) we monkey patch Rails
 to subscribe to controller actions and SQL queries.
-
-<br>
 
 ## Chapter 2: Storage
 In chapter two we discussed an appropriate storage engine for our data.
@@ -143,8 +144,6 @@ For this kind of data, a [log based storage engine](https://en.wikipedia.org/wik
 
 However, for the sake of simplicity, we store our metrics in a relational database in this tutorial, the implementation can be found in [5967](https://github.com/ChrisBr/active_monitoring/commit/5967190a1484009476f2378c02e3e0ea96d21624).
 
-<br>
-
 ## Chapter 3: Processing
 In the previous chapter we already stored the controller metrics.
 Before we can store SQL metrics, we need to do some more additional work.
@@ -164,13 +163,13 @@ The implementation can be found in [156d](https://github.com/ChrisBr/active_moni
 Depending on the database adapter you use, the queries might contain values.
 To group the same queries together, we need to normalize these queries.
 
-```SQL
+```sql
 SELECT * FROM books WHERE id = 1;
 SELECT * FROM books WHERE id = 2;
 ```
 
 For our performance monitoring tool, these two queries should be treated the same and we need to normalize them to
-```SQL
+```sql
 SELECT * FROM books WHERE id = xxx;
 ```
 
@@ -187,8 +186,6 @@ in when writing the SQL metrics.
 In [b1f1](https://github.com/ChrisBr/active_monitoring/commit/b1f1847270935beacc236bc54535ced1eb83c5ef) we implement a `CurrentAttributes` class and eventually write the SQL metrics.
 
 ActiveSupport ships with [CurrentAttributes](https://github.com/rails/rails/blob/157920aead96865e3135f496c09ace607d5620dc/activesupport/lib/active_support/current_attributes.rb) out of the box since Rails 5.
-
-<br>
 
 ## Chapter 4: Visualization
 So we now have several metrics in our data base written which would look something like
@@ -227,8 +224,6 @@ A very good blog article about data visualization for performance metrics from R
 
 In a real world application, I would strongly recommend to use a dashboard software like [Grafana](https://github.com/grafana/grafana).
 
-<br>
-
 ## Summary
 Congratulations, we implemented a very basic Performance Monitoring tool in just a few hundred lines of code now.
 We deep dived into [ActiveSupport Notifications](https://edgeguides.rubyonrails.org/active_support_instrumentation.html) and hooked into Rails events to write request and SQL query metrics in our data storage.
@@ -236,12 +231,10 @@ As data storage, we compared relational databases with time series databases lik
 Before we could visualize our data, we needed to clean, normalize and group the metrics.
 
 From here, we can easily add more metrics like [rendering of views](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#action-view), 
-[caching](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#active-support) or [background jobs](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#active-job).
+[caching](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#active-support), [background jobs](https://edgeguides.rubyonrails.org/active_support_instrumentation.html#active-job) or [HTTP requests](https://lostisland.github.io/faraday/middleware/instrumentation).
 
-As initially mentioned, this tutorial is heavily influenced by our work on https://github.com/influxdata/influxdb-rails.
+As initially mentioned, this tutorial is heavily influenced by our work on [influxdb-rails](https://github.com/influxdata/influxdb-rails).
 If this made you curious, we always look for new contributors.
-
-<br>
 
 ## Further reads
 * [Profiling and Benchmarking 101 by Nate Berkopec](https://youtu.be/XL51vf-XBTs)

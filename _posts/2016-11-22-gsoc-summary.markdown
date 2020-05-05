@@ -55,5 +55,3 @@ For open source organizations the application period starts on January 19, and f
 If you are interested in participating as student, mentor or administrator, get in touch with Christian and get more information on the official [GSoC page](https://developers.google.com/open-source/gsoc/).
 
 *Originally published on [https://news.opensuse.org](https://news.opensuse.org/2016/11/22/opensuse-mentors-blog-google-summer-of-code-experience/)*
-<br>
-<br>

@@ -28,4 +28,6 @@ Some impressions and slides from my talk.
 
 <img src="/img/rubyconf-id.jpg" alt="Ruby Conference Indonesia" style="; margin: 0 auto;" class="img-responsive"/>
 
+<div class="embed-responsive embed-responsive-16by9">
 <script async class="speakerdeck-embed" data-id="2da6a80cd9f847da949451062643d344" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+</div>

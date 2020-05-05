@@ -7,8 +7,6 @@ categories: JRuby
 
 The last few weeks I was working on improving [JRuby's](http://jruby.org) hash table implementation. Some of you might remember that with version 2.4, CRuby's hash table performance improved by around 40% :boom:. Vladimir Makarov achieved this impressive work by implementing open-addressing algorithm. Unfortunately, this change never got implemented in JRuby :cry:. As I was already contributing [smaller features](https://github.com/jruby/jruby/pulls?q=is%3Apr+is%3Aclosed+author%3AChrisBr) over the last year to JRuby I thought it would be time to contribute something bigger. So here we go!
 
-<br>
-
 ## The problem!
 
 Hash tables are one of the fastest :rocket: and most important data structures in modern programming languages. On average, inserting and searching can be done with ``O(1)``. This is achieved by using the elements key to calculate the index of the element in a hash table. However, if two key's result with the same index, a collision happens :zap:. Now there are basically two different approaches to [resolve this collision](https://en.wikipedia.org/wiki/Hash_table#Collision_resolution): separate chaining and open addressing.
@@ -21,8 +19,6 @@ Before we can optimize JRuby's hash, we first need to understand the disadvantag
 
 To make the most out of cache locality, objects should be as small as possible. With our current implementation, we need to store additional to the key and value of the element three references (for previous & next element and for potential collisions) which increases the size of the objects quite a bit. Furthermore the elements in linked lists are distributed in memory and therefore the probability that the next element is already loaded in the CPU's cache is low. In order to improve our performance, we need to decrease the size of the elements as most as possible as well as store the elements close together to avoid jumping in memory.
 
-<br>
-
 ## The idea
 
 A different approach to implement collision resolution is open addressing. Instead of creating a linked list when a collision happens, in open addressing the element just gets inserted in a different still empty bucket, for instance just the next empty one ([linear probing](https://en.wikipedia.org/wiki/Linear_probing)). This has the big advantage that it is not necessary to store references anymore and also the elements are stored close together in an array instead of a linked list. As we don't need to store the references anymore, we also removed the ``RubyHashEntry`` objects completely :raised_hands:. We now just store the key and values without a wrapper object which decreases the number of objects which need to get allocated as well as the overall size tremendously. To maintain the insertion order, we store the actual key and value objects by insertion in one array and have another array for the indexes. Additionally we have a third array to cache the hash values. This is necessary because the hash values are integers and therefore we would need to convert them to Integer objects if we want to store them together with the key and values. The new architecture basically looks like this:
@@ -30,8 +26,6 @@ A different approach to implement collision resolution is open addressing. Inste
 <img src="/img/open-addressing-sketch.jpg" alt="Sketch open addressing architecture" style="max-width: 55%; margin: 0 auto;" class="img-responsive"/>
 
 This was just a short overview but I highly recommend to read the articles by [Vladimir Makarov](https://developers.redhat.com/blog/2017/02/27/towards-faster-ruby-hash-tables/) (who did the implementation in CRuby) and [Jonan Scheffler](https://blog.heroku.com/ruby-2-4-features-hashes-integers-rounding#better-hashes) for more information about this topic.
-
-<br>
 
 ## How hard can it be?
 
@@ -42,8 +36,6 @@ As I helped to implement missing 2.5 features in JRuby beginning of the year, I 
 So beginning of June I was in contact with [Charlie](https://github.com/headius) again and asked for some directions and he suggested to open a pull request. And honestly I didn't like this idea in the beginning as the code was really ugly (I didn't program Java in years) and I also didn't know how much time :clock9: and motivation :sunny: I will have the next weeks to finish the PR. Looking back, I think this was one of the reasons it was eventually a success. Almost immediately after I opened the PR, several JRuby contributors commented on the PR and in IRC to give me feedback and ideas. For instance it was [Marcin Mielżyński's](https://github.com/lopex) idea to get rid of the ``RubyHashEntry`` objects and pack everything into one array. This approach significantly decreased the number of object allocations and improved the performance eventually. Getting as early as possible feedback, even if you only have a prototype, is fundamental!
 
 After finishing the prototype and the performance were improving, the last step before merging was to fix all failing tests. And as Hash tables are so fundamental in Ruby, consequentially this class is extensively tested. Not only dedicated tests exist but this class also gets tested indirectly by many many other tests. This is a great thing but caused a lot frustration for me as there were hundreds of tests failing in the beginning and I didn't even know were to start! However, as I'm relatively new to the huge JRuby codebase, I knew automated tests were my safety net I needed to rely on. And after the first frustration was gone I realized I need to do small steps, fixing test by test, [stage by stage](https://docs.travis-ci.com/user/build-stages). You probably won't believe me but simple 'off by one' errors caused the most frustration (e.g. not moving correctly start / end pointers after deleting the first / last element were driving me nuts) :sob:.
-
-<br>
 
 <img src="/img/tests-everywhere.jpg" alt="It compiled meme" style="max-width: 60%; margin: 0 auto;" class="img-responsive"/>
 
@@ -56,14 +48,10 @@ The last few years I mostly programmed in Ruby professionally. Because of that, 
 
 Last but not least I want to talk about one challenge most open source projects face: Attracting and integrating new contributors. Open source contributions should be a win-win situation, for the open source project and the contributor. The open source project obviously 'wins' the code contribution (of course with the burden of maintaining it in the long run). And for the contributor there can be many different incentives like learning a new technology, facing a nasty bug in your favorite library, getting attribution or just for the sake of fun. For me, contributing to open source is mostly a mix of learning and fun. And since my first pull request to JRuby, I learned a ton! I brushed up my Java knowledge, looked into the CRuby code, wrote C / Java extensions, discovered methods in Ruby's standard library I have never used before and submitted patches to several other Ruby projects to just name a few. As open source is about sharing and my memory is quite bad, this blog article is also an attempt to share what I learned the last two months :thought_balloon:.
 
-<br>
-
 ## But what is the result?
 First of all, [my code](https://github.com/jruby/jruby/pull/5215) is already merged upstream and will probably be included in the next JRuby release 9.2.1.0.
 
 <img src="/img/jruby-hash-tweet.png" alt="Tweet about merging open addressing into JRuby master" style="max-width: 40%; margin: 0 auto;" class="img-responsive"/>
-
-<br>
 
 And after mostly talking about the theory and what I learned by implementing all this it's time now to show the actual results. I compared setting and fetching keys in hashes of different sizes. I will only discuss a few examples but you can see a more detailed list of my benchmark results in [this repository](https://github.com/ChrisBr/benchmark-driver-docker/tree/master/output).
 
@@ -93,7 +81,6 @@ However, it's getting really interesting for large hashes with more than 10,000 
 
 <img src="/img/charly-tweet-graal-kwargs.png" alt="Separate chaining architecture" style="max-width: 40%; margin: 0 auto;" class="img-responsive"/>
 
-<br>
 ## Acknowledgments
 
 This patch would not have been possible without the help from the JRuby core team including [Charles Nutter](https://github.com/headius), [Thomas Enebo](https://github.com/enebo), [Karol Bucek](https://github.com/kares), [Marcin Mielżyński](https://github.com/lopex) and the excellent work by Vladimir Makarov on CRuby. Thanks also to the JRuby community for patiently testing and reporting issues.
