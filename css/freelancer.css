@@ -165,7 +165,11 @@ hr.star-primary:after {
 
 #about {
   padding-top: 80px;
-  padding-bottom: 80px;
+  padding-bottom: 30px;
+}
+
+.newsletter-form {
+  padding-top: 10px;
 }
 
 section h2 {
