@@ -18,6 +18,8 @@ socials:
     url: https://de.linkedin.com/in/bruckmayer
   - fa: fa-xing
     url: https://www.xing.com/profile/Christian_Bruckmayer
+  - fa: fa-stack-overflow
+    url: https://stackoverflow.com/users/13708583/christian-bruckmayer
 
 # Build settings
 markdown: kramdown
