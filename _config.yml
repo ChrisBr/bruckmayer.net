@@ -3,7 +3,7 @@ title: Christian Bruckmayer
 email: christian@bruckmayer.net
 description: > # this means to ignore newlines until "baseurl:"
   Personal blog of Christian Bruckmayer.
-  Software Engineering, Open Source, openSUSE, Travelling
+  Ruby, Ruby on Rails, RailsConf, RubyConf, Software Engineering and Open Source.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://bruckmayer.net" # the base hostname & protocol for your site
 
