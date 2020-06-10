@@ -3,6 +3,8 @@ layout: post
 title:  "Rails i18n - Handling formatting within translated content"
 date:   2020-02-04 00:00:00
 categories: Rails
+description: Rails Internationalization (I18n) - Handling formatting within translated content.
+image: globe-europe-simple.png
 ---
 At Cookpad we build a global product to not only make cooking fun every day but also *everywhere*.
 With the help of the Rails Internationalization (i18n) API we have brought Cookpad to over 30 languages around the world.

@@ -2,8 +2,10 @@
 layout: post
 title:  "RailsConf 2020: Building a Performance Analytics Tool with ActiveSupport"
 date:   2020-04-08 00:00:00
-categories: Rails
+categories: RailsConf
+image: rails-conf-logo.jpg
 permalink: rails-conf-2020
+description: RailsConf 2020 - Building a Performance Analytics Tool with ActiveSupport. Setting up a performance analytics tool like NewRelic or Skylight is one of the first things many developers do in a new project. However, have you ever wondered how these tools work under the hood?
 ---
 I gave this talk at [RailsConf 2020 Couch Edition](https://railsconf.com/) and this blog article contains the source code and step by step tutorial.
 The talk and tutorial is inspired by my work on [influxdb-rails](https://github.com/influxdata/influxdb-rails) and contains several patterns and learnings from it.
