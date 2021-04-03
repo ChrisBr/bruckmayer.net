@@ -159,12 +159,12 @@ hr.star-primary:after {
   }
 }
 
-#blog {
-  padding-top: 100px;
-}
+/* #blog {
+  padding-top: 60px;
+} */
 
 #about {
-  padding-top: 80px;
+  padding-top: 100px;
   padding-bottom: 30px;
 }
 
@@ -186,10 +186,10 @@ li {
 
 @media (max-width: 767px) {
   section {
-    padding: 75px 0;
+    padding: 60px 0;
   }
   section.first {
-    padding-top: 75px;
+    padding-top: 60px;
   }
 }
 
