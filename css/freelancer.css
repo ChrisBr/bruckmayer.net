@@ -72,6 +72,10 @@ hr.star-primary:after {
   padding-top: 40px;
 }
 
+.post {
+  padding-top: 120px;
+}
+
 .post-meta {
   padding-top: 5px;
   color: #2C3E50;
