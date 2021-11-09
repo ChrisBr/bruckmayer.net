@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "RubyConf 2021: Keeping Developers Happy with a Fast CI"
+date:   2021-11-08 00:00:00
+categories: RubyConf
+image: ruby-conf-logo.jpg
+permalink: ruby-conf-2021
+description: RubyConf 2021 - When talking about performance, most developers think application speed, faster algorithms or better data structures. But what about your test suite? CI time is developer waiting time!
+---
+
+This talk was presented at [RubyConf 2021 in Denver](https://rubyconf.org/program/sessions#session-1219).
+
+> When talking about performance, most developers think application speed, faster algorithms or better data structures. But what about your test suite? CI time is developer waiting time!
+
+> At Shopify we have more than 170,000 Ruby tests and we add 30,000 more annually. The sheer amount of tests and their growth requires some aggressive methods. We will illustrate some of our techniques including monitoring, test selection, timeouts and the 80/20 rule. If you have experience in writing tests and want to learn tricks on how to speed up your test suite, this talk is for you!
+
+## Slides
+
+<div class="embed-responsive embed-responsive-16by9">
+  <script async class="speakerdeck-embed" data-id="4dbe485c879c4dd3b8df41e568d7b943" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+</div>
